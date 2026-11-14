@@ -1,0 +1,7 @@
+build/
+tools/
+upstream/
+config.env
+profiles/
+*.provisionprofile
+.DS_Store

@@ -1,0 +1,39 @@
+diff --git a/src/setup/main_macos.mm b/src/setup/main_macos.mm
+index 8fcd206..1be29dd 100644
+--- a/src/setup/main_macos.mm
++++ b/src/setup/main_macos.mm
+@@ -190,8 +190,9 @@ - (void)showScreen:(Screen)screen detail:(const std::string&)detail {
+     case Screen::Done:
+         _heading.stringValue = @"Done";
+         _body.stringValue =
+-            @"This computer now owns the glasses. In OBS they connect when a glasses source goes "
+-            @"live.";
++            @"This Mac now owns the glasses. You do not need to do this again on this Mac.\n\n"
++            @"Choose the camera \u201cMeta Glasses\u201d in Screen Studio or any camera app. The glasses "
++            @"start by themselves.";
+         [self setPrimary:@"Close" secondary:nil];
+         break;
+     case Screen::Failed:
+@@ -342,6 +343,22 @@ int main() {
+         SetupController* controller = [SetupController new];
+         application.delegate = controller;
+         [application setActivationPolicy:NSApplicationActivationPolicyRegular];
++        // Without an Edit menu, Command-C/V/X/A never reach the login page or the address box.
++        NSMenu* bar = [NSMenu new];
++        NSMenuItem* appItem = [bar addItemWithTitle:@"" action:nil keyEquivalent:@""];
++        appItem.submenu = [NSMenu new];
++        [appItem.submenu addItemWithTitle:@"Quit" action:@selector(terminate:) keyEquivalent:@"q"];
++        NSMenuItem* editItem = [bar addItemWithTitle:@"Edit" action:nil keyEquivalent:@""];
++        NSMenu* edit = [[NSMenu alloc] initWithTitle:@"Edit"];
++        [edit addItemWithTitle:@"Undo" action:@selector(undo:) keyEquivalent:@"z"];
++        [edit addItemWithTitle:@"Redo" action:@selector(redo:) keyEquivalent:@"Z"];
++        [edit addItem:NSMenuItem.separatorItem];
++        [edit addItemWithTitle:@"Cut" action:@selector(cut:) keyEquivalent:@"x"];
++        [edit addItemWithTitle:@"Copy" action:@selector(copy:) keyEquivalent:@"c"];
++        [edit addItemWithTitle:@"Paste" action:@selector(paste:) keyEquivalent:@"v"];
++        [edit addItemWithTitle:@"Select All" action:@selector(selectAll:) keyEquivalent:@"a"];
++        editItem.submenu = edit;
++        application.mainMenu = bar;
+         [application run];
+     }
+     return ExitFailed;

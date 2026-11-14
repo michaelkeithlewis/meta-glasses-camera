@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleIdentifier</key><string>@BUNDLE_ID@.camera</string>
+<key>CFBundleName</key><string>Meta Glasses Camera</string>
+<key>CFBundleDisplayName</key><string>Meta Glasses Camera</string>
+<key>CFBundleExecutable</key><string>@BUNDLE_ID@.camera</string>
+<key>CFBundlePackageType</key><string>SYSX</string>
+<key>CFBundleShortVersionString</key><string>@VERSION@</string>
+<key>CFBundleVersion</key><string>@BUILD@</string>
+<key>LSMinimumSystemVersion</key><string>13.3</string>
+<key>CMIOExtension</key><dict>
+  <key>CMIOExtensionMachServiceName</key><string>@TEAM_ID@.@BUNDLE_ID@.camera</string>
+</dict>
+<key>NSSystemExtensionUsageDescription</key><string>Adds a "Meta Glasses" camera that shows your Ray-Ban Meta glasses' view.</string>
+</dict></plist>

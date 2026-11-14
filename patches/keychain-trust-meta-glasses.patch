@@ -1,0 +1,14 @@
+--- a/src/macos/identity_keychain.mm
++++ b/src/macos/identity_keychain.mm
+@@ -44,6 +44,11 @@ id trustedAccess() {
+     if (SecTrustedApplicationCreateFromPath("/Applications/OBS.app", &obs_app) == errSecSuccess) {
+         [trusted addObject:(__bridge_transfer id)obs_app];
+     }
++    SecTrustedApplicationRef glasses_app = nullptr;
++    if (SecTrustedApplicationCreateFromPath("/Applications/Meta Glasses.app", &glasses_app) ==
++        errSecSuccess) {
++        [trusted addObject:(__bridge_transfer id)glasses_app];
++    }
+     SecAccessRef access = nullptr;
+     if (SecAccessCreate(CFSTR("Meta G Link Direct"), (__bridge CFArrayRef)trusted, &access) !=
+         errSecSuccess) {
