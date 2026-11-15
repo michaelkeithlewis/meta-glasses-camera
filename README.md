@@ -33,12 +33,26 @@ OBS plugin. This project puts the same connection behind a macOS camera extensio
 - **Start time.** The first picture takes about 50 seconds.
 - **Video only.** The camera carries no audio. Use a normal microphone in the camera app.
 
-## Requirements
+## Install
+
+1. Download the latest `Meta-Glasses-<version>-macos-arm64.zip` from
+   [Releases](https://github.com/michaelkeithlewis/meta-glasses-camera/releases).
+2. Unzip the file.
+3. Move **Meta Glasses.app** to the **Applications** folder. The camera extension works only
+   from the **Applications** folder.
+4. Open **Meta Glasses.app**.
+5. Continue at [Set up](#set-up-one-time-per-mac).
+
+The release build is signed with a Developer ID and notarized by Apple. The release build runs on
+Apple Silicon Macs with macOS 13.3 or later.
+
+## Requirements to build
+
 
 - A Mac with Apple Silicon, macOS 13.3 or later, and Xcode.
 - Ray-Ban Meta Gen 2 glasses.
 - A paid Apple Developer Program membership. macOS runs a camera extension only when the extension
-  is signed with a Developer ID.
+  is signed with a Developer ID. The release download does not need a membership.
 
 ## Build
 
